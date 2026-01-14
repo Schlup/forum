@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: cleanwheel-pg
+    image: postgres
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DATABASE: cleanwheel
+      PGDATA: /data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
