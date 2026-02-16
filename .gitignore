@@ -60,3 +60,8 @@ data
 /data
 /data/pg
 data/pg
+
+./private_key.pem
+private_key.pem
+./public_key.pem
+public_key.pem
