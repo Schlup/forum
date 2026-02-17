@@ -1,7 +1,9 @@
-@baseUrl = http://localhost:3333/
+@baseUrl = http://localhost:3333
+
+@authToken = {{authenticate.response.body.access_token}}
 
 # @name create_account
-POST {{baseUrl}}accounts
+POST {{baseUrl}}/accounts
 Content-Type: application/json
 
 {
@@ -13,10 +15,29 @@ Content-Type: application/json
 ###
 
 # @name authenticate
-POST {{baseUrl}}sessions
+POST {{baseUrl}}/sessions
 Content-Type: application/json
 
 {
     "email": "alex3@gmail.com",
     "password": "testadoessacaralho"
 }
+
+###
+
+# @name create_question
+POST {{baseUrl}}/questions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+    "title": "Quantas capitais o Reino Unido já teve?",
+    "content": "O Brasil já teve 3 capitais: Salvador, Rio de Janeiro e Brasília. Gostaria de saber se alguém tem mais informações sobre isso."
+}
+
+###
+
+# @name fetch_recent_questions
+GET {{baseUrl}}/questions?page=2
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
